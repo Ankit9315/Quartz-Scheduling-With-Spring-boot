@@ -5,11 +5,14 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class ScheduleInfo {
@@ -28,9 +31,19 @@ public class ScheduleInfo {
     private LocalDateTime created;
     
     private LocalDateTime modified;
+
+    @OneToOne(cascade=CascadeType.ALL,targetEntity=Status.class)
+	@JoinColumn(name="status_code",referencedColumnName = "statusCode")
+	private Status status;
     
-    private String status;
-    
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	public LocalDateTime getCreated() {
 		return created;
 	}
@@ -45,14 +58,6 @@ public class ScheduleInfo {
 
 	public void setModified(LocalDateTime modified) {
 		this.modified = modified;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
 	}
 
 	public String getJobUUID() {
@@ -108,6 +113,24 @@ public class ScheduleInfo {
 	private LocalDateTime jobStartTime;
 	
 	private LocalDateTime jobEndTime;
+	
+	private String calendarName;
+
+	public String getCalendarName() {
+		return calendarName;
+	}
+	public void setCalendarName(String calendarName) {
+		this.calendarName = calendarName;
+	}
+	
+	private String calendarType;
+
+	public String getCalendarType() {
+		return calendarType;
+	}
+	public void setCalendarType(String calendarType) {
+		this.calendarType = calendarType;
+	}
 
 	public LocalDateTime getJobEndTime() {
 		return jobEndTime;

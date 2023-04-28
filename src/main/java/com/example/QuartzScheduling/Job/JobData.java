@@ -40,11 +40,28 @@ public class JobData {
 	public void setJobStartTime(String jobStartTime) {
 		this.jobStartTime = jobStartTime;
 	}
-	
 	@Override
 	public String toString() {
 		return "JobData [jobName=" + jobName + ", jobGroup=" + jobGroup + ", jobType=" + jobType + ", jobStartTime="
-				+ jobStartTime + ", cronExpression=" +  "]";
+				+ jobStartTime + ", jobEndTime=" + jobEndTime  + "]";
+	}
+	
+	private String calendarName;
+
+	public String getCalendarName() {
+		return calendarName;
+	}
+	public void setCalendarName(String calendarName) {
+		this.calendarName = calendarName;
+	}
+	
+	private String calendarType;
+
+	public String getCalendarType() {
+		return calendarType;
+	}
+	public void setCalendarType(String calendarType) {
+		this.calendarType = calendarType;
 	}
 	
 }

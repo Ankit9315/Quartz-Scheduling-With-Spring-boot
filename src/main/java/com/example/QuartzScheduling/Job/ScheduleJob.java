@@ -20,9 +20,10 @@ public class ScheduleJob extends QuartzJobBean{
 	protected void executeInternal(JobExecutionContext context) throws JobExecutionException {
 		// TODO Auto-generated method stub
 		System.out.println(context.getJobDetail().getKey().getName());
-		ScheduleInfo scheduleInfo = scheduleInfoRepo.findByJobName(context.getJobDetail().getKey().getName());
-		scheduleInfo.setStatus("Active");
-		scheduleInfoRepo.save(scheduleInfo);
+	//	ScheduleInfo scheduleInfo = scheduleInfoRepo.findByJobName(context.getJobDetail().getKey().getName());
+	//	scheduleInfo.setStatus("Active");
+	//	scheduleInfoRepo.save(scheduleInfo);
+		
 		JobDataMap mergedJobDataMap= context.getMergedJobDataMap();
 		
 		for(String key : mergedJobDataMap.getKeys())

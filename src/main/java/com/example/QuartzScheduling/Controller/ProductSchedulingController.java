@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.QuartzScheduling.Entity.ScheduleInfo;
 import com.example.QuartzScheduling.Job.JobData;
 import com.example.QuartzScheduling.Service.ScheduleService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 public class ProductSchedulingController {
@@ -28,7 +29,7 @@ public class ProductSchedulingController {
 	 
 	 @PostMapping("/schedule")
 	 public ResponseEntity<ScheduleInfo> scheduleTask(@RequestBody JobData jobData) {
-		 System.out.println(jobData.toString());
+		  
 		 return scheduleService.schedule(jobData);
 	 }
 	 

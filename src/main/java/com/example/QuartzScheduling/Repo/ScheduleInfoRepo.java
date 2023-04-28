@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.QuartzScheduling.Entity.ScheduleInfo;
+import com.example.QuartzScheduling.Entity.Status;
 
 @Repository
 public interface ScheduleInfoRepo extends JpaRepository<ScheduleInfo,Long>{
@@ -17,6 +18,9 @@ public interface ScheduleInfoRepo extends JpaRepository<ScheduleInfo,Long>{
 	
 	@Transactional
 	public String deleteByJobUUID(String string);
+
+	public List<ScheduleInfo> findAllByStatus(Status s);
+
 	
-	public List findAllByStatus(String status);
+	//public List findAllByStatus(String status);
 }
